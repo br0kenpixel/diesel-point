@@ -1,12 +1,12 @@
 [package]
 name = "diesel-point"
-version = "0.1.1"
+version = "2.0.0"
 edition = "2021"
-authors = ["fernandomarca"]
+authors = ["br0kenpixel"]
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 
-repository = "https://github.com/fernandomarca/diesel-point"
+repository = "https://github.com/br0kenpixel/diesel-point"
 documentation = "https://docs.rs/diesel-point"
 description = "Diesel support for Point types in Postgres"
 keywords = ["sql", "orm", "diesel", "postgres", "point"]
