@@ -1,4 +1,4 @@
-use crate::sql_types::*;
+use crate::sql_types::Point;
 use byteorder::{NetworkEndian, ReadBytesExt, WriteBytesExt};
 use diesel::deserialize::{self, FromSql};
 use diesel::pg::Pg;
@@ -12,8 +12,9 @@ use std::io::Cursor;
 pub struct PointXy(pub f64, pub f64);
 
 impl PointXy {
-    pub fn new(x: f64, y: f64) -> Self {
-        PointXy(x, y)
+    #[must_use]
+    pub const fn new(x: f64, y: f64) -> Self {
+        Self(x, y)
     }
 }
 
@@ -42,7 +43,7 @@ impl FromSql<Point, Pg> for PointXy {
         bytes: <Pg as diesel::backend::Backend>::RawValue<'_>,
     ) -> deserialize::Result<Self> {
         let (x, y) = <(f64, f64) as FromSql<Point, Pg>>::from_sql(bytes)?;
-        Ok(PointXy(x, y))
+        Ok(Self(x, y))
     }
 }
 
